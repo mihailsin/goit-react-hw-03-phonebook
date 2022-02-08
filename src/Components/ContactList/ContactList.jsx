@@ -25,14 +25,17 @@ ContactList.propTypes = {
   items: propTypes.array.isRequired,
 };
 
+const filteredContacts = (contacts, filter) => {
+  const normalizedFilter = filter.toLowerCase();
+  return contacts.filter(contact =>
+    contact.name.toLowerCase().includes(normalizedFilter),
+  );
+};
+
 const mapStateToProps = state => {
   const { filter, items } = state.contacts;
-  const normalizedFilter = filter.toLowerCase();
-
   return {
-    items: items.filter(item =>
-      item.name.toLowerCase().includes(normalizedFilter),
-    ),
+    items: filteredContacts(items, filter),
   };
 };
 
