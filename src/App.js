@@ -1,9 +1,9 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import addContact from './redux/actions';
 import ContactForm from './Components/ContactForm';
 import ContactList from './Components/ContactList';
 import Filter from './Components/Filter';
+import addContact from './redux/contacts/contacts-actions';
 
 import './App.css';
 import { Grid, GridContainer } from './App.styled';
@@ -70,30 +70,31 @@ class App extends React.Component {
     console.log('App render');
     // const filteredContacts = this.filterContacts();
     return (
-      // <Grid>
-      <GridContainer>
-        <h1>Phonebook</h1>
-        <ContactForm submitted={this.props.handleSubmit} />
-      </GridContainer>
+      <Grid>
+        <GridContainer>
+          <h1>Phonebook</h1>
+          <ContactForm submitted={this.props.handleSubmit} />
+        </GridContainer>
 
-      /* <GridContainer>
+        <GridContainer>
           <h2>Contacts</h2>
-          <Filter
+          {/* <Filter
             value={this.state.filter}
             inputHandler={this.filterInputHandler}
-          />
+          /> */}
           <ContactList
-            contacts={filteredContacts}
-            deleteHandler={this.deleteContact}
+          // contacts={this.props.items}
+          // deleteHandler={this.deleteContact}
           />
         </GridContainer>
-      </Grid> */
+      </Grid>
     );
   }
 }
 
 const mapStateToProps = state => {
-  return { items: state.contacts.items };
+  const { items } = state.contacts;
+  return { items: items };
 };
 const mapDispatchToProps = dispatch => {
   return {

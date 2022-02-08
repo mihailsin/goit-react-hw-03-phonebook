@@ -1,12 +1,13 @@
 import propTypes from 'prop-types';
 import { ImBin2 } from 'react-icons/im';
+import { connect } from 'react-redux';
 
 import { List, Item, Button } from './ContactList.styled';
 
-const ContactList = ({ contacts, deleteHandler }) => {
+const ContactList = ({ deleteHandler, items }) => {
   return (
     <List>
-      {contacts.map(({ name, number, id }) => {
+      {items.map(({ name, number, id }) => {
         return (
           <Item key={id}>
             {name} : {number}
@@ -26,7 +27,10 @@ const ContactList = ({ contacts, deleteHandler }) => {
 };
 
 ContactList.propTypes = {
-  contacts: propTypes.array.isRequired,
+  items: propTypes.array.isRequired,
 };
-
-export default ContactList;
+const mapStateToProps = state => {
+  const { items } = state.contacts;
+  return { items: items };
+};
+export default connect(mapStateToProps)(ContactList);

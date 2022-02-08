@@ -1,6 +1,8 @@
+import ADD from './contacts-types';
+
 const addContact = contact => {
   return {
-    type: 'contact/add',
+    type: ADD,
     payload: contact,
   };
 };

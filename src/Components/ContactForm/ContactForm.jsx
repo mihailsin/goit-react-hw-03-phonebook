@@ -1,4 +1,5 @@
 import { nanoid } from 'nanoid';
+import { connect } from 'react-redux';
 
 import React from 'react';
 import { Form, Label, Input, Button, Wrapper } from './ContactForm.styled';
@@ -67,4 +68,4 @@ class ContactForm extends React.Component {
   }
 }
 
-export default ContactForm;
+export default connect()(ContactForm);
