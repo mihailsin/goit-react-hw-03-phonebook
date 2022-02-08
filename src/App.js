@@ -3,7 +3,6 @@ import { connect } from 'react-redux';
 import ContactForm from './Components/ContactForm';
 import ContactList from './Components/ContactList';
 import Filter from './Components/Filter';
-import addContact from './redux/contacts/contacts-actions';
 
 import './App.css';
 import { Grid, GridContainer } from './App.styled';
@@ -47,13 +46,6 @@ class App extends React.Component {
   //   );
   // };
 
-  // deleteContact = id => {
-  //   this.setState(prevState => ({
-  //     contacts: prevState.contacts.filter(contact => contact.id !== id),
-  //   }));
-
-  // };
-
   // componentDidMount() {
   //   const savedContacts = localStorage.getItem('contacts');
   //   const parsedContacts = JSON.parse(savedContacts);
@@ -73,15 +65,15 @@ class App extends React.Component {
       <Grid>
         <GridContainer>
           <h1>Phonebook</h1>
-          <ContactForm submitted={this.props.handleSubmit} />
+          <ContactForm />
         </GridContainer>
 
         <GridContainer>
           <h2>Contacts</h2>
-          {/* <Filter
-            value={this.state.filter}
-            inputHandler={this.filterInputHandler}
-          /> */}
+          <Filter
+          // value={this.state.filter}
+          // inputHandler={this.filterInputHandler}
+          />
           <ContactList
           // contacts={this.props.items}
           // deleteHandler={this.deleteContact}
@@ -92,14 +84,14 @@ class App extends React.Component {
   }
 }
 
-const mapStateToProps = state => {
-  const { items } = state.contacts;
-  return { items: items };
-};
-const mapDispatchToProps = dispatch => {
-  return {
-    handleSubmit: contact => dispatch(addContact(contact)),
-  };
-};
+// const mapStateToProps = state => {
+//   const { items } = state.contacts;
+//   return { items: items };
+// };
+// const mapDispatchToProps = dispatch => {
+//   return {
+//     handleSubmit: contact => dispatch(addContact(contact)),
+//   };
+// };
 
-export default connect(mapStateToProps, mapDispatchToProps)(App);
+export default connect()(App);

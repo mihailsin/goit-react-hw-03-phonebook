@@ -1,5 +1,7 @@
 import { nanoid } from 'nanoid';
 import propTypes from 'prop-types';
+import { connect } from 'react-redux';
+import { filterContacts } from '../../redux/contacts/contacts-actions';
 import { Label, Input, Wrapper } from '../ContactForm/ContactForm.styled';
 const Filter = ({ value, inputHandler }) => {
   const filterInputId = nanoid(7);
@@ -9,8 +11,8 @@ const Filter = ({ value, inputHandler }) => {
       <Label htmlFor={filterInputId}>Filter</Label>
       <Input
         onChange={inputHandler}
-        id={filterInputId}
         value={value}
+        id={filterInputId}
         type="text"
         name="filter"
         required
@@ -20,8 +22,14 @@ const Filter = ({ value, inputHandler }) => {
 };
 
 Filter.propTypes = {
-  value: propTypes.string.isRequired,
+  value: propTypes.string,
   inputHandler: propTypes.func.isRequired,
 };
 
-export default Filter;
+const mapStateToProps = state => {
+  return { value: state.contacts.filter };
+};
+const mapDispatchToProps = dispatch => {
+  return { inputHandler: e => dispatch(filterContacts(e.target.value)) };
+};
+export default connect(mapStateToProps, mapDispatchToProps)(Filter);

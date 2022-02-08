@@ -1,4 +1,4 @@
-import ADD from './contacts-types';
+import { ADD, DELETE, FILTER } from './contacts-types';
 
 const addContact = contact => {
   return {
@@ -7,4 +7,18 @@ const addContact = contact => {
   };
 };
 
-export default addContact;
+const deleteContact = id => {
+  return {
+    type: DELETE,
+    payload: id,
+  };
+};
+
+const filterContacts = value => {
+  return {
+    type: FILTER,
+    payload: value,
+  };
+};
+
+export { addContact, deleteContact, filterContacts };
