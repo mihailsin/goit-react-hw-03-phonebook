@@ -60,7 +60,6 @@ class App extends React.Component {
 
   render() {
     console.log('App render');
-    // const filteredContacts = this.filterContacts();
     return (
       <Grid>
         <GridContainer>
@@ -70,14 +69,8 @@ class App extends React.Component {
 
         <GridContainer>
           <h2>Contacts</h2>
-          <Filter
-          // value={this.state.filter}
-          // inputHandler={this.filterInputHandler}
-          />
-          <ContactList
-          // contacts={this.props.items}
-          // deleteHandler={this.deleteContact}
-          />
+          <Filter />
+          <ContactList />
         </GridContainer>
       </Grid>
     );
