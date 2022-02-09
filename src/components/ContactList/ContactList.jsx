@@ -23,6 +23,7 @@ const ContactList = ({ deleteContact, items }) => {
 
 ContactList.propTypes = {
   items: propTypes.array.isRequired,
+  deleteContact: propTypes.func.isRequired,
 };
 
 const filteredContacts = (contacts, filter) => {

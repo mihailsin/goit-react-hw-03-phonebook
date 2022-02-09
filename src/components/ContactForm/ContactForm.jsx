@@ -67,14 +67,6 @@ class ContactForm extends React.Component {
     );
   }
 }
-const mapStateToProps = state => {
-  const { items } = state.contacts;
-  if (!items) return;
-  else {
-    localStorage.setItem('contacts', JSON.stringify(items));
-    return { items: items };
-  }
-};
 
 const mapDispatchToProps = dispatch => {
   return {
@@ -82,4 +74,4 @@ const mapDispatchToProps = dispatch => {
   };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(ContactForm);
+export default connect(null, mapDispatchToProps)(ContactForm);

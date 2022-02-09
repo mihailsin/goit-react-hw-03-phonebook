@@ -1,10 +1,10 @@
 import { combineReducers } from 'redux';
 import { ADD, DELETE, FILTER } from './contacts-types';
+import { loadState } from '../../localStorage/localStorage';
 
-const storageItems = localStorage.getItem('contacts');
-const parsedItems = JSON.parse(storageItems);
+const persistedState = loadState();
 
-const itemsReducer = (state = parsedItems, { type, payload }) => {
+const itemsReducer = (state = persistedState, { type, payload }) => {
   switch (type) {
     case ADD:
       return [payload, ...state];
